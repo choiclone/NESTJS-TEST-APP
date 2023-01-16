@@ -1,13 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { Movie } from './entity/movie.entity';
 
 @Injectable()
 export class MovieService {
-    getAll(): string {
-        return "hello Suckers";
+    private movies: Movie[] = [];
+
+    getAll(): Movie[] {
+        return this.movies;
     }
 
-    getOne(id: string): string {
-        return `hello Sucker ${id}`; 
+    getOne(id: number): Movie {
+        return this.movies.find(movie => movie.id == id); 
     }
 
     createMovie(movie: string[]) {

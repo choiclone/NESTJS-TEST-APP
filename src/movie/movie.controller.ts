@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Movie } from './entity/movie.entity';
 import { MovieService } from './movie.service';
 
 @Controller('movie')
@@ -9,14 +10,14 @@ export class MovieController {
 
     @Get()
     getAll(
-    ): string {
+    ): Movie[] {
         return this.movieService.getAll();
     }
 
     @Get("/:id")
     getOne(
-        @Param('id') id: string
-    ): string{
+        @Param('id') id: number
+    ): Movie{
         return this.movieService.getOne(id);
     }
 
